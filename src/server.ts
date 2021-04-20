@@ -2,6 +2,8 @@ import express from "express";
 
 import { helloRouter } from "./routes/hello.routes";
 
+import "./database";
+
 const app = express();
 
 app.use(express.json());
