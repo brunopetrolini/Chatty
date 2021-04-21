@@ -22,6 +22,13 @@ class MessagesService {
     await messagesRepository.save(message);
     return message;
   }
+
+  async listByUser(user_id: string): Promise<Message[]> {
+    const messagesRepository = getCustomRepository(MessagesRepository);
+
+    const messagesList = await messagesRepository.find({ user_id });
+    return messagesList;
+  }
 }
 
 export { MessagesService };
