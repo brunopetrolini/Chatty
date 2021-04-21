@@ -33,7 +33,7 @@ export class MessagesTable1618962681918 implements MigrationInterface {
         foreignKeys: [
           {
             name: "FKMessageUser",
-            referencedTableName: "Users",
+            referencedTableName: "users",
             referencedColumnNames: ["id"],
             columnNames: ["user_id"],
             onDelete: "SET NULL",

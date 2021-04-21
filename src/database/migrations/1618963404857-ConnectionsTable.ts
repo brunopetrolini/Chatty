@@ -34,7 +34,7 @@ export class ConnectionsTable1618963404857 implements MigrationInterface {
         foreignKeys: [
           {
             name: "FKConnectionUser",
-            referencedTableName: "Users",
+            referencedTableName: "users",
             referencedColumnNames: ["id"],
             columnNames: ["user_id"],
             onDelete: "SET NULL",
