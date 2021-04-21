@@ -7,7 +7,7 @@ class SettingsController {
     const { chat, username } = request.body;
 
     const settingsService = new SettingsService();
-    settingsService.execute({ chat, username });
+    settingsService.create({ chat, username });
 
     return response.status(201).send();
   }

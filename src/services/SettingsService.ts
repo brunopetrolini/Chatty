@@ -8,7 +8,7 @@ interface IRequest {
 }
 
 class SettingsService {
-  async execute({ chat, username }: IRequest): Promise<void> {
+  async create({ chat, username }: IRequest): Promise<void> {
     const settingsRepository = getCustomRepository(SettingsRepository);
 
     const settings = settingsRepository.create({
