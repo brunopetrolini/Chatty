@@ -28,6 +28,7 @@ export class ConnectionsTable1618963404857 implements MigrationInterface {
           {
             name: "updated_at",
             type: "timestamp",
+            default: "now()",
           },
         ],
         foreignKeys: [
