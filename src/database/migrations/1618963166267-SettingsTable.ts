@@ -18,11 +18,12 @@ export class SettingsTable1618963166267 implements MigrationInterface {
           {
             name: "chat",
             type: "boolean",
-            default: false,
+            default: true,
           },
           {
             name: "updated_at",
             type: "timestamp",
+            default: "now()",
           },
           {
             name: "created_at",
