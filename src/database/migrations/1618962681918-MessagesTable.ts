@@ -14,6 +14,7 @@ export class MessagesTable1618962681918 implements MigrationInterface {
           {
             name: "admin_id",
             type: "uuid",
+            isNullable: true,
           },
           {
             name: "user_id",
