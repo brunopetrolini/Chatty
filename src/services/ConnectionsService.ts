@@ -34,6 +34,11 @@ class ConnectionsService {
 
     return connection;
   }
+
+  async findUserId(user_id: string): Promise<Connection | undefined> {
+    const connection = await this.connectionsRepository.findOne({ user_id });
+    return connection;
+  }
 }
 
 export { ConnectionsService };
