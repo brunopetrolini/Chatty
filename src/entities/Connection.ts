@@ -27,7 +27,7 @@ class Connection {
   user: User;
 
   @Column()
-  socket_io: string;
+  socket_id: string;
 
   @CreateDateColumn()
   created_at: Date;

@@ -1,9 +1,28 @@
 import { Socket } from "socket.io";
 
 import { ioServer } from "../http";
+import { ConnectionsService } from "../services/ConnectionsService";
+import { UsersService } from "../services/UsersService";
 
 ioServer.on("connect", (socket: Socket) => {
-  socket.on("client_first_access", (params) => {
-    console.log(params);
+  const connectionsService = new ConnectionsService();
+  const usersService = new UsersService();
+
+  socket.on("client_first_access", async (params) => {
+    const socket_id = socket.id;
+    const { text, email } = params;
+
+    const userExists = await usersService.findByEmail(email);
+
+    if (!userExists) {
+      const user = await usersService.create(email);
+
+      await connectionsService.create({
+        socket_id,
+        user_id: user.id,
+      });
+    } else {
+      await connectionsService.create({ socket_id, user_id: userExists.id });
+    }
   });
 });
