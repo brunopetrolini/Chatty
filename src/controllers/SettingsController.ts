@@ -3,17 +3,13 @@ import { Request, Response } from "express";
 import { SettingsService } from "../services/SettingsService";
 
 class SettingsController {
-  private settingsService: SettingsService;
-
-  constructor() {
-    this.settingsService = new SettingsService();
-  }
-
   async create(request: Request, response: Response): Promise<Response> {
     const { chat, username } = request.body;
 
+    const settingsService = new SettingsService();
+
     try {
-      const setting = await this.settingsService.create({ chat, username });
+      const setting = await settingsService.create({ chat, username });
       return response.status(201).json(setting);
     } catch (error) {
       return response.status(400).json({ err: error.message });
@@ -26,7 +22,9 @@ class SettingsController {
   ): Promise<Response> {
     const { username } = request.params;
 
-    const userSettings = await this.settingsService.findByUsername(username);
+    const settingsService = new SettingsService();
+
+    const userSettings = await settingsService.findByUsername(username);
     return response.status(200).json(userSettings);
   }
 }
