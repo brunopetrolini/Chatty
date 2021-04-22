@@ -8,5 +8,6 @@ const settingsController = new SettingsController();
 
 settingsRoutes.post("/", settingsController.create);
 settingsRoutes.get("/:username", settingsController.findByUsername);
+settingsRoutes.put("/:username", settingsController.update);
 
 export { settingsRoutes };
