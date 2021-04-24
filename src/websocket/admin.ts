@@ -37,4 +37,12 @@ ioServer.on("connect", async (socket: Socket) => {
       socket_id: socket.id,
     });
   });
+
+  socket.on("admin_user_in_support", async (params) => {
+    const { user_id } = params;
+
+    await connectionsService.updateAdminId(user_id, socket.id);
+
+    ioServer.emit("admin_list_all_users", allConnectionsWithoutAdmin);
+  });
 });
